@@ -1,0 +1,23 @@
+//fuentes
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@200;400;600&display=swap");
+$fuente-base: "Poppins";
+$fuente-titulo: "Bangers";
+$primary: #ff5959;
+$secondary: #fbce5a;
+$variation: #fd9659;
+//Mixins
+@mixin fuente($fuente) {
+  @if ($fuente = $fuente-base) {
+    font-family: $fuente;
+  } @else {
+    font-family: $fuente;
+    text-transform: uppercase;
+  }
+}
+//responsive font
+html {
+  font-size: 16px;
+  @media (max-width: 1000px) {
+    font-size: calc(12px + 0.4vw);
+  }
+}

@@ -1,0 +1,17 @@
+.button {
+  text-align: center;
+  margin: 2rem 0;
+  background: linear-gradient(180deg, $primary -52.86%, $secondary 137.14%);
+  border: 2px solid white;
+  border-radius: 35px;
+  padding: 1rem;
+  font-size: 2.2rem;
+  color: white;
+  @include fuente($fuente-titulo);
+  &__container {
+    text-align: center;
+  }
+}
+.button:focus {
+  outline: none;
+}
