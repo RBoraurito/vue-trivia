@@ -32,7 +32,7 @@
           </div>
           <div class="home__options__item">
             <h3>Category</h3>
-            <select name="category" id>
+            <select v-model="setCat" name="category" id>
               <option v-for="c in category" :key="c.id" :value="c.name">{{
                 c.name
               }}</option>
@@ -40,13 +40,13 @@
           </div>
           <div class="home__options__item">
             <h3>type</h3>
-            <select name="type" id>
+            <select v-model="setType" name="type" id>
               <option v-for="t in type" :key="t" :value="t">{{ t }}</option>
             </select>
           </div>
           <div class="home__options__item">
             <h3>difficulty</h3>
-            <select class="form-control" name="difficulty" id>
+            <select v-model="setDiff" class="form-control" name="difficulty" id>
               <option v-for="d in difficulty" :key="d" :value="d">{{
                 d
               }}</option>
@@ -55,7 +55,7 @@
         </div>
       </aside>
       <div class="button__container container-md w-100">
-        <button class="button">Start Now</button>
+        <button @click="send()" class="button">Start Now</button>
       </div>
     </div>
   </div>
@@ -63,6 +63,7 @@
 
 <script>
 import PxNavbar from "@/components/PxNavbar";
+import { category } from "@/info.json";
 export default {
   name: "Home",
   components: {
@@ -70,34 +71,11 @@ export default {
   },
   data() {
     return {
-      cant: Number,
-      category: [
-        { id: 0, name: "Any Category" },
-        { id: 9, name: "General Knowledge" },
-        { id: 10, name: "Entertainment: Books" },
-        { id: 11, name: "Entertainment: Film" },
-        { id: 12, name: "Entertainment: Music" },
-        { id: 13, name: "Entertainment: Musicals & Theatres" },
-        { id: 14, name: "Entertainment: Television" },
-        { id: 15, name: "Entertainment: Video Games" },
-        { id: 16, name: "Entertainment: Board Games" },
-        { id: 17, name: "Science & Nature" },
-        { id: 18, name: "Science: Computers" },
-        { id: 19, name: "Science: Mathematics" },
-        { id: 20, name: "Mythology" },
-        { id: 21, name: "Sports" },
-        { id: 22, name: "Geography" },
-        { id: 23, name: "History" },
-        { id: 24, name: "Politics" },
-        { id: 25, name: "Art" },
-        { id: 26, name: "Celebrities" },
-        { id: 27, name: "Animals" },
-        { id: 28, name: "Vehicles" },
-        { id: 29, name: "Entertainment: Comics" },
-        { id: 30, name: "Science: Gadgets" },
-        { id: 31, name: "Entertainment: Japanese Anime & Manga" },
-        { id: 32, name: "Entertainment: Cartoon & Animations" },
-      ],
+      cant: 1,
+      setCat: "Any Category",
+      setDiff: "Any Difficulty",
+      setType: "Any Type",
+      category: category,
       type: ["Any Type", "Multiple Choise", "True / False"],
       difficulty: ["Any Difficulty", "Easy", "Medium", "Hard"],
     };
@@ -109,6 +87,14 @@ export default {
         this.cant = 0;
         this.$swal("Remember Just 20 questions 🧡");
       }
+    },
+    send() {
+      this.$store.commit("setOptions", {
+        cant: this.cant,
+        type: this.setType,
+        cat: this.setCat,
+        diff: this.setDiff,
+      });
     },
   },
 };
