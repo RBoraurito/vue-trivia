@@ -3,15 +3,15 @@
     <px-navbar></px-navbar>
     <div class="home">
       <div class="container-md">
-        <h1 class="text-primary home__title">
-          Do you want to answer a few questions?
-        </h1>
+        <h1 class="text-primary home__title">Do you want to answer a few questions?</h1>
         <p class="home__text">
           👋🏼 Hi! this is a trivia app, if you want to anwser a few questions you
           are in the right place, so lets have fun. Lets start, first you have
           to fill the information that is requested bellow 👇🏼(remember ask just
           20 questions per game) and then click
-          <span class="text-primary">"Start Now"</span> , and finally have fun
+          <span
+            class="text-primary"
+          >"Start Now"</span> , and finally have fun
           😁.
         </p>
       </div>
@@ -33,9 +33,11 @@
           <div class="home__options__item">
             <h3>Category</h3>
             <select v-model="setCat" name="category" id>
-              <option v-for="c in category" :key="c.id" :value="c.name">{{
+              <option v-for="c in localCategory" :key="c.id" :value="c.name">
+                {{
                 c.name
-              }}</option>
+                }}
+              </option>
             </select>
           </div>
           <div class="home__options__item">
@@ -47,15 +49,19 @@
           <div class="home__options__item">
             <h3>difficulty</h3>
             <select v-model="setDiff" class="form-control" name="difficulty" id>
-              <option v-for="d in difficulty" :key="d" :value="d">{{
+              <option v-for="d in difficulty" :key="d" :value="d">
+                {{
                 d
-              }}</option>
+                }}
+              </option>
             </select>
           </div>
         </div>
       </aside>
       <div class="button__container container-md w-100">
-        <button @click="send()" class="button">Start Now</button>
+        <router-link :to="{name:'Trivia'}">
+          <button @click="send(setCat)" class="button">Start Now</button>
+        </router-link>
       </div>
     </div>
   </div>
@@ -67,7 +73,7 @@ import { category } from "@/info.json";
 export default {
   name: "Home",
   components: {
-    PxNavbar,
+    PxNavbar
   },
   data() {
     return {
@@ -75,9 +81,9 @@ export default {
       setCat: "Any Category",
       setDiff: "Any Difficulty",
       setType: "Any Type",
-      category: category,
+      localCategory: category,
       type: ["Any Type", "Multiple Choise", "True / False"],
-      difficulty: ["Any Difficulty", "Easy", "Medium", "Hard"],
+      difficulty: ["Any Difficulty", "Easy", "Medium", "Hard"]
     };
   },
   methods: {
@@ -88,15 +94,19 @@ export default {
         this.$swal("Remember Just 20 questions 🧡");
       }
     },
-    send() {
+    send(attr) {
+      //Buscando la categoria en el arreglo de categorias con cat(v-model)
+      const searchCat = category.find(c => c.name == attr);
+      console.log(searchCat);
       this.$store.commit("setOptions", {
         cant: this.cant,
         type: this.setType,
-        cat: this.setCat,
-        diff: this.setDiff,
+        //Enviando el Id al store para la consulta del api
+        cat: searchCat.id,
+        diff: this.setDiff
       });
-    },
-  },
+    }
+  }
 };
 </script>
 
