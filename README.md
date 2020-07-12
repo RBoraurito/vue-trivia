@@ -9,7 +9,7 @@ app, I hope you can enjoy it, send me a pull request if you want.
 - [📸Instagram](https://instagram.com/rboraure)
 - [👨🏼‍💻 Dev.to](https://dev.to/rboraure0205)
 
-## What I use?
+## What did I use?
 
 ### Core
 
