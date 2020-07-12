@@ -37,6 +37,21 @@
       font-size: 2.2rem;
       @include fuente($fuente-titulo);
     }
+    &__container {
+      width: 90%;
+      min-height: 50px;
+      max-height: 100px;
+      margin: 0.5rem auto;
+      border-radius: 15px;
+      background-color: #fff;
+      box-shadow: 5px 5px 8px rgba(51, 51, 51, 0.25);
+      @include grow();
+      &__text {
+        margin: 0.7rem 0;
+        color: $primary;
+        @include fuente($fuente-titulo);
+      }
+    }
   }
   &__steps {
     width: 100%;

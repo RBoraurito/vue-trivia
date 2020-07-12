@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Trivia from "../views/Trivia.vue";
+import Results from "../views/Results.vue";
 
 Vue.use(VueRouter);
 
@@ -15,6 +16,11 @@ const routes = [
     path: "/trivia",
     name: "Trivia",
     component: Trivia,
+  },
+  {
+    path: "/results",
+    name: "Results",
+    component: Results,
   },
   //  {
   //   path: "/about",

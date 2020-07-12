@@ -10,6 +10,8 @@ export default new Vuex.Store({
     difficulty: "",
     type: "",
     info: false,
+    isFinish: false,
+    hasInfo: false,
     currentStep: 0,
     selectedAnswers: [],
   },
@@ -19,19 +21,33 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    setData(state, data) {
+      state.info = data;
+    },
     setOptions(state, opt) {
       state.cant = opt.cant;
       state.difficulty = opt.diff;
       state.category = opt.cat;
       state.type = opt.type;
     },
-    setData(state, data) {
-      state.info = data;
-    },
+
     setStep(state, step) {
-      state.step = step;
+      state.currentStep = step;
+    },
+    addAnswer(state, answer) {
+      state.selectedAnswers.push(answer);
+    },
+    finish(state) {
+      state.isFinish = !state.isFinish;
+    },
+    setHasInfo(state) {
+      state.hasInfo = !state.hasInfo;
     },
   },
-  actions: {},
+  actions: {
+    setData(context) {
+      context.commit("setData");
+    },
+  },
   modules: {},
 });

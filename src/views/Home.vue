@@ -98,6 +98,7 @@ export default {
       //Buscando la categoria en el arreglo de categorias con cat(v-model)
       const searchCat = category.find(c => c.name == attr);
       console.log(searchCat);
+      this.$store.commit("setHasInfo");
       this.$store.commit("setOptions", {
         cant: this.cant,
         type: this.setType,

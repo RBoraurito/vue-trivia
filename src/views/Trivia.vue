@@ -7,6 +7,14 @@
       </div>
       <div class="trivia__answer">
         <h3 class="trivia__answer__title">Pick an Answer</h3>
+        <div
+          class="trivia__answer__container"
+          v-for="(t,i) in totalAnswers"
+          :key="i"
+          @click="nextStep(t)"
+        >
+          <h3 class="trivia__answer__container__text" v-html="t"></h3>
+        </div>
       </div>
       <div class="trivia__steps">
         <h3 class="trivia__steps__text">{{currentStep + 1}} / {{totalSteps}}</h3>
@@ -29,10 +37,25 @@ export default {
     };
   },
   methods: {
-    nextStep() {}
+    nextStep(answer) {
+      this.$store.commit("addAnswer", answer);
+      this.$store.commit("setStep", (this.currentStep += 1));
+      this.currentStep = this.$store.state.currentStep;
+      if (this.currentStep === this.totalSteps) {
+        this.$store.commit("finish");
+        this.$router.push({ name: "Results" });
+        return false;
+      }
+      this.info = this.$store.state.info[this.currentStep];
+      this.totalSteps = this.$store.getters.infoCount;
+      this.currentQuestion = this.info.question;
+      this.totalAnswers = [];
+      this.totalAnswers.push(...this.info.incorrect_answers);
+      this.totalAnswers.push(this.info.correct_answer);
+    }
   },
   created() {
-    if (!this.$store.state.info) {
+    if (this.$store.state.hasInfo === false) {
       this.$router.push({ name: "Home" });
     }
     let options = {
@@ -48,7 +71,7 @@ export default {
       this.totalSteps = this.$store.getters.infoCount;
       this.currentQuestion = this.info.question;
       this.totalAnswers.push(...this.info.incorrect_answers);
-      this.totalAnswers.push(...this.info.correct_answers);
+      this.totalAnswers.push(this.info.correct_answer);
     });
   }
 };
