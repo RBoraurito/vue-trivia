@@ -9,6 +9,14 @@ export default new Vuex.Store({
     category: "",
     difficulty: "",
     type: "",
+    info: false,
+    currentStep: 0,
+    selectedAnswers: [],
+  },
+  getters: {
+    infoCount(state) {
+      return state.info.length;
+    },
   },
   mutations: {
     setOptions(state, opt) {
@@ -16,6 +24,12 @@ export default new Vuex.Store({
       state.difficulty = opt.diff;
       state.category = opt.cat;
       state.type = opt.type;
+    },
+    setData(state, data) {
+      state.info = data;
+    },
+    setStep(state, step) {
+      state.step = step;
     },
   },
   actions: {},
