@@ -1,6 +1,5 @@
 <template>
   <div>
-    <px-navbar></px-navbar>
     <div class="home">
       <div class="container-md">
         <h1 class="text-primary home__title">Do you want to answer a few questions?</h1>
@@ -15,7 +14,7 @@
           😁.
         </p>
       </div>
-      <aside class="bg-primary">
+      <aside class="home__container">
         <div class="container-md home__options">
           <h3 class="text-white home__options__title">Choose as you want</h3>
           <div class="home__options__item">
@@ -68,13 +67,9 @@
 </template>
 
 <script>
-import PxNavbar from "@/components/PxNavbar";
 import { category } from "@/info.json";
 export default {
   name: "Home",
-  components: {
-    PxNavbar
-  },
   data() {
     return {
       cant: 1,

@@ -1,6 +1,6 @@
 .home {
   &__title {
-    margin: 2.8rem auto;
+    margin: 1.5rem auto;
     width: 70%;
     font-size: 3.5rem;
     text-align: center;
@@ -42,11 +42,13 @@
         border: 0;
         border-radius: 15px;
       }
-      input:focus {
+      input:focus,
+      select:focus {
         outline: 0;
       }
       select {
         width: 100%;
+        padding: 5px 10px;
         border: 0;
         border-radius: 15px;
         text-align: center;
@@ -56,6 +58,15 @@
         }
       }
     }
+  }
+  &__container {
+    background: radial-gradient(
+      99.41% 10222.97% at 0% 50%,
+      #ff5959 17.71%,
+      #fd9359 41.67%,
+      #fcac5a 66.41%,
+      #facf5a 100%
+    );
   }
 }
 @include media(under-desktop-s) {
