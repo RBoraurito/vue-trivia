@@ -55,6 +55,7 @@ export default {
       }
     }
     this.$store.commit("finish");
+    this.$store.commit("defaultState");
   }
 };
 </script>

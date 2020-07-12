@@ -43,6 +43,17 @@ export default new Vuex.Store({
     setHasInfo(state) {
       state.hasInfo = !state.hasInfo;
     },
+    defaultState(state) {
+      state.cant = 0;
+      state.category = "";
+      state.difficulty = "";
+      state.type = "";
+      state.info = false;
+      state.isFinish = false;
+      state.hasInfo = false;
+      state.currentStep = 0;
+      state.selectedAnswers = [];
+    },
   },
   actions: {
     setData(context) {
