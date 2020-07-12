@@ -2,15 +2,15 @@
   <div>
     <div class="home">
       <div class="container-md">
-        <h1 class="text-primary home__title">Do you want to answer a few questions?</h1>
+        <h1 class="text-primary home__title">
+          Do you want to answer a few questions?
+        </h1>
         <p class="home__text">
           👋🏼 Hi! this is a trivia app, if you want to anwser a few questions you
           are in the right place, so lets have fun. Lets start, first you have
           to fill the information that is requested bellow 👇🏼(remember ask just
           20 questions per game) and then click
-          <span
-            class="text-primary"
-          >"Start Now"</span> , and finally have fun
+          <span class="text-primary">"Start Now"</span> , and finally have fun
           😁.
         </p>
       </div>
@@ -33,9 +33,7 @@
             <h3>Category</h3>
             <select v-model="setCat" name="category" id>
               <option v-for="c in localCategory" :key="c.id" :value="c.name">
-                {{
-                c.name
-                }}
+                {{ c.name }}
               </option>
             </select>
           </div>
@@ -49,16 +47,14 @@
             <h3>difficulty</h3>
             <select v-model="setDiff" class="form-control" name="difficulty" id>
               <option v-for="d in difficulty" :key="d" :value="d">
-                {{
-                d
-                }}
+                {{ d }}
               </option>
             </select>
           </div>
         </div>
       </aside>
       <div class="button__container container-md w-100">
-        <router-link :to="{name:'Trivia'}">
+        <router-link :to="{ name: 'Trivia' }">
           <button @click="send(setCat)" class="button">Start Now</button>
         </router-link>
       </div>

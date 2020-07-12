@@ -9,7 +9,7 @@
         <h3 class="trivia__answer__title">Pick an Answer</h3>
         <div
           class="trivia__answer__container"
-          v-for="(t,i) in totalAnswers"
+          v-for="(t, i) in totalAnswers"
           :key="i"
           @click="nextStep(t)"
         >
@@ -17,7 +17,9 @@
         </div>
       </div>
       <div class="trivia__steps">
-        <h3 class="trivia__steps__text">{{currentStep + 1}} / {{totalSteps}}</h3>
+        <h3 class="trivia__steps__text">
+          {{ currentStep + 1 }} / {{ totalSteps }}
+        </h3>
       </div>
     </div>
   </section>
@@ -77,5 +79,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

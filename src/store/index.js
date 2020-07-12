@@ -13,12 +13,12 @@ export default new Vuex.Store({
     isFinish: false,
     hasInfo: false,
     currentStep: 0,
-    selectedAnswers: [],
+    selectedAnswers: []
   },
   getters: {
     infoCount(state) {
       return state.info.length;
-    },
+    }
   },
   mutations: {
     setData(state, data) {
@@ -53,12 +53,12 @@ export default new Vuex.Store({
       state.hasInfo = false;
       state.currentStep = 0;
       state.selectedAnswers = [];
-    },
+    }
   },
   actions: {
     setData(context) {
       context.commit("setData");
-    },
+    }
   },
-  modules: {},
+  modules: {}
 });

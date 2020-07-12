@@ -15,7 +15,7 @@
         <span>{{ score.toFixed(2) }} pts</span>
       </h3>
     </div>
-    <router-link :to="{name:'Home'}">
+    <router-link :to="{ name: 'Home' }">
       <button class="btn btn-primary results__button">Finish</button>
     </router-link>
   </section>

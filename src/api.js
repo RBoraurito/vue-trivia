@@ -41,14 +41,14 @@ function getParams(options) {
 }
 function getData(options) {
   let query = "";
-  getParams(options).forEach((Element) => {
+  getParams(options).forEach(Element => {
     query = query + Element + "&";
   });
   const URL = BASE_URL + query;
   console.log(URL);
   return fetch(URL)
-    .then((res) => res.json())
-    .then((res) => res.results);
+    .then(res => res.json())
+    .then(res => res.results);
 }
 
 export default getData;
