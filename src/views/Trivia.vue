@@ -27,6 +27,7 @@
 
 <script>
 import getData from "@/api";
+import { shuffle } from "@/random";
 export default {
   name: "Trivia",
   data() {
@@ -54,6 +55,7 @@ export default {
       this.totalAnswers = [];
       this.totalAnswers.push(...this.info.incorrect_answers);
       this.totalAnswers.push(this.info.correct_answer);
+      shuffle(this.totalAnswers);
     }
   },
   created() {
@@ -74,6 +76,7 @@ export default {
       this.currentQuestion = this.info.question;
       this.totalAnswers.push(...this.info.incorrect_answers);
       this.totalAnswers.push(this.info.correct_answer);
+      shuffle(this.totalAnswers);
     });
   }
 };
